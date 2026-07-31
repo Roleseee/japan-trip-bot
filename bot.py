@@ -31,6 +31,9 @@ AUTHORIZED_USER_IDS = {
 
 COMMAND_PREFIX = "!ask"
 UPDATE_PREFIX = "!update"
+PIN_PREFIX = "!pin"
+UNPIN_PREFIX = "!unpin"
+ALERT_PREFIX = "!alert"
 MODEL = "claude-sonnet-5"
 HISTORY_LIMIT = 8  # how many prior messages to include as context
 MAX_SEARCHES_PER_REPLY = 4  # caps cost/latency per message; raise if answers feel cut short
@@ -70,7 +73,8 @@ ROLE_INSTRUCTIONS = """YOUR ROLE:
 - When you cite something from a search, keep it light - a short "(via [site name])" or a link is enough; don't dump a bibliography into a group chat.
 - Keep answers concise and useful for a group chat - a short list is fine when someone asks for a list, don't compress it into a vague summary; just avoid turning it into an essay unless asked for more detail.
 - If multiple people are chiming in, feel free to address the group rather than one person.
-- If someone asks to change/add/remove something on the hub, tell them to use `!update <what they want changed>` instead of trying to do it via `!ask` - you can't edit the hub yourself through this command."""
+- If someone asks to change/add/remove something on the hub, tell them to use `!update <what they want changed>` instead of trying to do it via `!ask` - you can't edit the hub yourself through this command.
+- If someone asks how to pin something, tell them to reply to the message with `!pin` (or `!unpin` on a pinned message to remove it). If someone wants to broadcast an important heads-up to the channel, tell them a trip organizer can use `!alert <message>`."""
 
 
 def _strip_html(text: str) -> str:
@@ -163,6 +167,9 @@ top-level keys:
   "summary": "<one or two short sentences describing what you changed, for a human to review before it's published>",
   "updated_data": { ...the full updated itinerary JSON, matching the original schema exactly... }
 }
+
+Output the JSON compactly (no extra indentation/whitespace beyond what's needed for valid JSON) - the file is
+large and you have a limited output budget, so avoid pretty-printing it.
 """
 
 
@@ -206,9 +213,22 @@ class TripBot(discord.Client):
             return
 
         stripped = message.content.strip()
+        lowered = stripped.lower()
 
-        if stripped.lower().startswith(UPDATE_PREFIX):
+        if lowered.startswith(UPDATE_PREFIX):
             await self.handle_update(message, stripped[len(UPDATE_PREFIX):].strip())
+            return
+
+        if lowered.startswith(UNPIN_PREFIX):
+            await self.handle_pin(message, pin=False)
+            return
+
+        if lowered.startswith(PIN_PREFIX):
+            await self.handle_pin(message, pin=True)
+            return
+
+        if lowered.startswith(ALERT_PREFIX):
+            await self.handle_alert(message, stripped[len(ALERT_PREFIX):].strip())
             return
 
         is_mention = self.user in message.mentions
@@ -278,6 +298,72 @@ class TripBot(discord.Client):
             tools=[WEB_SEARCH_TOOL],
             messages=messages,
         )
+
+    # ---------- pin / alerts ----------
+
+    async def handle_pin(self, message: discord.Message, pin: bool):
+        verb = "pin" if pin else "unpin"
+        ref = message.reference
+        if ref is None or ref.message_id is None:
+            await message.channel.send(
+                f"Reply to the message you want to {verb} with `!{verb}` (as a reply, not a plain message)."
+            )
+            return
+
+        try:
+            target = ref.resolved
+            if not isinstance(target, discord.Message):
+                target = await message.channel.fetch_message(ref.message_id)
+
+            if pin:
+                await target.pin(reason=f"Pinned by {message.author.display_name} via !pin")
+            else:
+                await target.unpin(reason=f"Unpinned by {message.author.display_name} via !unpin")
+        except discord.Forbidden:
+            await message.channel.send(
+                f"I don't have permission to {verb} messages here - I need the **Manage Messages** "
+                "permission in this server. Ask whoever manages the server to grant it."
+            )
+            return
+        except discord.HTTPException as exc:
+            # Discord caps a channel at 50 pins; surface that clearly rather than a raw error.
+            if pin and getattr(exc, "status", None) == 400:
+                await message.channel.send(
+                    "Couldn't pin that - this channel may already be at Discord's 50-pin limit. "
+                    "Unpin something old first."
+                )
+            else:
+                await message.channel.send(f"Couldn't {verb} that message: `{exc}`.")
+            return
+        except discord.NotFound:
+            await message.channel.send("Couldn't find the message you replied to.")
+            return
+
+        await message.add_reaction("📌" if pin else "👍")
+
+    async def handle_alert(self, message: discord.Message, alert_text: str):
+        if message.author.id not in AUTHORIZED_USER_IDS:
+            await message.channel.send(
+                "Only the trip organizers can send an alert. Ask one of them, "
+                "or ask me a question instead with `!ask`."
+            )
+            return
+
+        if not alert_text:
+            await message.channel.send(
+                "What's the alert? e.g. `!alert USJ Express Pass tickets just went on sale`"
+            )
+            return
+
+        alert_msg = await message.channel.send(
+            f"🚨 **Alert from {message.author.display_name}:** {alert_text}"
+        )
+
+        try:
+            await alert_msg.pin(reason=f"Auto-pinned alert from {message.author.display_name}")
+        except (discord.Forbidden, discord.HTTPException):
+            # Pinning is a nice-to-have here; don't fail the alert if it can't be pinned.
+            pass
 
     # ---------- !update ----------
 
@@ -349,9 +435,14 @@ class TripBot(discord.Client):
             self.itinerary_data = new_data
             self.trip_system_prompt = build_trip_system_prompt(new_data)
 
-        await message.channel.send(
+        published_msg = await message.channel.send(
             f"Published by {user.display_name} ✅ The hub will update in a minute or two: {HUB_URL}"
         )
+        try:
+            await published_msg.pin(reason="Auto-pinned latest itinerary update")
+        except (discord.Forbidden, discord.HTTPException):
+            # Pinning is a nice-to-have here; don't fail the update if it can't be pinned.
+            pass
 
     async def _propose_update(self, request_text: str):
         current_json = json.dumps(self.itinerary_data, ensure_ascii=False)
@@ -360,13 +451,18 @@ class TripBot(discord.Client):
         response = await asyncio.to_thread(
             anthropic_client.messages.create,
             model=MODEL,
-            max_tokens=4096,
+            max_tokens=8192,
             system=UPDATE_EDITOR_PROMPT,
             messages=[{"role": "user", "content": user_message}],
         )
 
         text = "".join(block.text for block in response.content if block.type == "text").strip()
         text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.MULTILINE).strip()
+
+        if response.stop_reason == "max_tokens":
+            raise ValueError(
+                "the edit response got cut off before finishing - try a smaller/more specific request"
+            )
 
         parsed = json.loads(text)
         summary = parsed["summary"]
