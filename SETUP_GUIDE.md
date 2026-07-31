@@ -4,7 +4,7 @@ Three files work together:
 
 1. **`itinerary_data.json`** — the single source of truth for the trip: booking checklist, flights/stays, and the Tokyo/Osaka/Kyoto wishlists.
 2. **`japan-trip-hub.html`** — a static page that fetches `itinerary_data.json` and renders it. Hosted on GitHub Pages: https://roleseee.github.io/japan-trip-bot/japan-trip-hub.html
-3. **`bot.py`** — a Discord bot. `@mention` or `!ask` it for live trip Q&A (Claude + web search, so answers on prices/on-sale dates stay current). `!update` lets 4 authorized people edit the itinerary from Discord, which publishes straight to the hub.
+3. **`bot.py`** — a Discord bot. `@mention` or `!ask` it for live trip Q&A (Claude + web search, so answers on prices/on-sale dates stay current). `!update` lets 4 authorized people edit the itinerary from Discord, which publishes straight to the hub. `!pin`/`!unpin` (as a reply) and `!alert` (authorized only) handle pinning and broadcasting in-channel.
 
 This is already deployed (Railway + GitHub Pages), so most of this doc is for reference if you need to redeploy from scratch or add another authorized editor.
 
@@ -13,7 +13,8 @@ This is already deployed (Railway + GitHub Pages), so most of this doc is for re
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) → **New Application** → name it (e.g. "Japan Trip Bot").
 2. **Bot** tab → **Add Bot**. Under **Privileged Gateway Intents**, turn on **Message Content Intent** (required — the bot reads message text to answer questions).
 3. Copy the **bot token** (Reset Token if needed) — this is your `DISCORD_BOT_TOKEN`.
-4. **Installation** tab → set Guild Install scopes to `bot` (+ `applications.commands` if you want) with permissions `Send Messages`, `Read Message History`, `View Channels`. Use the Discord-provided install link (or the OAuth2 URL Generator) to invite it to a server.
+4. **Installation** tab → set Guild Install scopes to `bot` (+ `applications.commands` if you want) with permissions `Send Messages`, `Read Message History`, `View Channels`, `Manage Messages` (needed for `!pin`/`!unpin` and auto-pinning alerts/updates). Use the Discord-provided install link (or the OAuth2 URL Generator) to invite it to a server.
+   - If the bot is already in a server from before `Manage Messages` was added, re-run the install/authorize link for that server (same client ID, permissions integer `76800`) to grant the extra permission — or go to the server's **Settings → Roles → (bot's role)** and toggle **Manage Messages** on directly.
 
 ## 2. Anthropic API key
 
@@ -82,7 +83,22 @@ It pulls the last few messages in the channel as context and searches the web wh
 !update mark the USJ Express Pass as booked
 ```
 
-The bot proposes the change with a plain-English summary and posts ✅/❌ reactions. Only a reaction from one of the 4 authorized users confirms it (5 minute timeout). Once confirmed, it commits `itinerary_data.json` to GitHub, which auto-publishes the hub page and updates the bot's own answers.
+The bot proposes the change with a plain-English summary and posts ✅/❌ reactions. Only a reaction from one of the 4 authorized users confirms it (5 minute timeout). Once confirmed, it commits `itinerary_data.json` to GitHub, which auto-publishes the hub page and updates the bot's own answers, and it pins its own "Published" confirmation message so the latest change is easy to find.
+
+**Pinning** (anyone can use this):
+
+```
+!pin        (as a reply to the message you want pinned)
+!unpin      (as a reply to a pinned message, to remove it)
+```
+
+Requires the bot to have the **Manage Messages** permission in the server (see step 1) — without it, it'll tell you rather than fail silently.
+
+**Alerts** (authorized users only) — broadcasts a highlighted, auto-pinned message to the channel:
+
+```
+!alert USJ Express Pass tickets just went on sale
+```
 
 ## Sharing the hub page
 
