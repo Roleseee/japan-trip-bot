@@ -3,101 +3,330 @@
     "title": "Japan Trip Hub",
     "subtitle": "Tokyo · Kyoto & Uji · Osaka — Nov 4–18, 2026",
     "traveler_pills": [
-      { "text": "3 travelers · full trip (Nov 4–18)", "style": "" },
-      { "text": "1 traveler · Nov 4–11 only", "style": "" },
-      { "text": "Flights: booked (Cathay Pacific, likely via Hong Kong)", "style": "ok" },
-      { "text": "Tokyo hotel: booked ✅ (La'Gent Hotel Shinjuku Kabukicho)", "style": "ok" }
+      {
+        "text": "3 travelers · full trip (Nov 4–18)",
+        "style": ""
+      },
+      {
+        "text": "1 traveler · Nov 4–11 only",
+        "style": ""
+      },
+      {
+        "text": "Flights: booked (Cathay Pacific, likely via Hong Kong)",
+        "style": "ok"
+      },
+      {
+        "text": "Tokyo hotel: booked ✅ (La'Gent Hotel Shinjuku Kabukicho)",
+        "style": "ok"
+      }
     ]
   },
   "stays": [
-    { "meta": "BOOKED", "title": "Flights", "body": "Booked with Cathay Pacific, most likely routing via Hong Kong." },
-    { "meta": "BOOKED", "title": "Tokyo hotel", "body": "<b>La'Gent Hotel Shinjuku Kabukicho</b> — booked for the Tokyo leg of the trip." },
-    { "meta": "TO DECIDE", "title": "Kyoto & Osaka accommodation", "body": "Not yet decided whether these are overnight stays or day trips from Tokyo/Shinjuku." }
+    {
+      "meta": "BOOKED",
+      "title": "Flights",
+      "body": "Booked with Cathay Pacific, most likely routing via Hong Kong."
+    },
+    {
+      "meta": "BOOKED",
+      "title": "Tokyo hotel",
+      "body": "<b>La'Gent Hotel Shinjuku Kabukicho</b> — booked for the Tokyo leg of the trip."
+    },
+    {
+      "meta": "TO DECIDE",
+      "title": "Kyoto & Osaka accommodation",
+      "body": "Not yet decided whether these are overnight stays or day trips from Tokyo/Shinjuku."
+    }
   ],
   "booking_callout": "<b>Why timing matters:</b> several of Japan's most popular experiences use timed-release or lottery ticketing 1–3 months out, and November 2026 is the 25th‑anniversary year for Universal Studios Japan — expect faster sellouts than usual. Check items off as your group books them; this list saves in the page.",
   "booking_checklist": [
-    { "id": "nintendo_museum", "urgent": true, "meta": "ENTER LOTTERY IN AUGUST 2026 — RESULTS SEPT 1", "title": "Nintendo Museum, Uji (Kyoto)", "body": "Tickets are lottery-only via museum-tickets.nintendo.com (free Nintendo Account needed). Entries open 3 months before the target month, with results on the 1st of the following month — so for a November visit, enter during August 2026, results announced Sept 1. No walk-ins, no third-party booking. If you miss the lottery, unclaimed slots sometimes open for direct purchase about 2 weeks after results — worth checking the site then too." },
-    { "id": "usj", "urgent": false, "meta": "BOOK BY ~ MID-SEPTEMBER 2026", "title": "Universal Studios Japan (Osaka) — Express Pass", "body": "Express Passes for November typically go on sale mid-September (about 6–7 weeks out) and sell out weeks in advance online; on-site sales are rare. Base Studio Pass (park admission) is separate and required alongside it. 2026 is USJ's 25th anniversary (\"Discover U!!\"), so crowds and demand are higher than normal — book as soon as the window opens via the official USJ site or Klook/Rakuten." },
-    { "id": "teamlab", "urgent": false, "meta": "BOOK: AS SOON AS CALENDAR OPENS (~EARLY SEPT), AT LEAST 2–3 WEEKS AHEAD", "title": "teamLab Planets / Borderless (Tokyo)", "body": "Timed-entry tickets, booking calendar opens roughly two months ahead. Planets does not sell on-site at all; Borderless same-day tickets can also sell out. Rough pricing: Planets ¥2,600–4,200 adult depending on date; Borderless ¥3,800–5,600 adult. Weekends need 2–3 weeks' notice, holiday-adjacent dates a month+. Book via the official site or Klook (often best rates)." },
-    { "id": "ghibli", "urgent": false, "meta": "BOOK ON: OCT 10, 2026, 10:00 AM JST", "title": "Ghibli Museum, Mitaka (Tokyo)", "body": "Overseas tickets are released via Lawson Ticket International on the 10th of the month for the following month — so November tickets go on sale Oct 10 at 10am Japan time. They sell out within minutes/hours. Someone in the group should be ready right at 10am JST that day. Fallback: JTB Sunrise Tour packages if you miss the window." },
-    { "id": "shibuya_sky", "urgent": false, "meta": "OPENS ~2 WEEKS AHEAD OF EACH DATE, AT MIDNIGHT JST", "title": "Shibuya Sky — sunset slot", "body": "Advance tickets ¥2,500 (vs ¥3,000 on the door). Dates open roughly 2 weeks out; the slot starting about an hour before sunset is the most popular and can go within days. Book the moment your date opens. Heads-up: the official site has been rejecting a lot of foreign-issued cards since mid-2024 — Klook is a safer bet for booking with a non-Japanese card." },
-    { "id": "mario_kart", "urgent": true, "meta": "GET THE IDP BEFORE YOU LEAVE HOME — CANNOT BE DONE IN JAPAN", "title": "Mario Kart street tour", "body": "Every participant needs an International Driving Permit (1949 Geneva Convention, booklet form — not a printout) plus their physical home driver's licence and passport. The IDP has to be issued in your home country before you fly out; it cannot be obtained once you're in Japan. (UK: apply at a Post Office. Handful of countries — Switzerland, Germany, France, Taiwan, Belgium, Estonia, Monaco — can use an official Japanese translation of their licence instead.) Book the tour itself separately once everyone's permits are sorted." },
-    { "id": "shinkansen", "urgent": false, "meta": "BOOK RESERVED SEATS ~3–4 WEEKS AHEAD", "title": "Tokyo–Kyoto–Osaka transport", "body": "<b>Skip the JR Pass for this route</b> — with just Tokyo/Kyoto/Osaka, a round-trip Tokyo–Kyoto Shinkansen fare (~¥28,340) is well under the 7-day Pass price (¥50,000 now, rising to ¥53,000 from Oct 1, 2026). The Pass only pays off if you add a longer leg like Hiroshima or Kanazawa. Book point-to-point reserved seats instead via SmartEX or JR-Central/JR-West's Ekinet, ideally 3–4 weeks out — November is peak autumn travel season and reserved cars do sell out on popular days/times." },
-    { "id": "kyoto_osaka_accom", "urgent": false, "meta": "DECIDE, THEN BOOK", "title": "Kyoto & Osaka accommodation", "body": "Still open whether Kyoto and Osaka are overnight stays or day trips from the Tokyo/Shinjuku base. Worth deciding soon since it changes what else needs booking (extra hotel nights) versus just transport timing for day trips." },
-    { "id": "baseball", "urgent": false, "meta": "HEADS-UP: LIKELY WON'T ALIGN WITH THESE DATES", "title": "Baseball at Tokyo Dome", "body": "Worth flagging early: the 2026 NPB regular season and Japan Series are on track to wrap up by around November 1 (Japan Series currently slated Oct 24 – Nov 1 if it goes the full 7 games). That's before your Nov 4 arrival, so an actual NPB game during the trip looks unlikely. Worth a quick check closer to the time for any exhibition games or other Tokyo Dome events, but don't bank on this one — may be worth dropping from the plan." },
-    { "id": "restaurants", "urgent": false, "meta": "BOOK 1–8 WEEKS AHEAD DEPENDING ON RESTAURANT", "title": "Sought-after restaurant reservations", "body": "Popular sushi/omakase counters (like the small 6-seat spots in Osaka) often book out weeks to months ahead. Use TableCheck, Pocket Concierge, or the OMAKASE app for English-friendly booking; some places only take reservations via phone or a hotel concierge. Worth locking in a few \"must-do\" dinners early — Gonpachi included — and leaving other nights flexible for Dotonbori/Omoide Yokocho-style wandering." },
-    { "id": "illuminations", "urgent": false, "meta": "CHECK/BOOK IN OCTOBER", "title": "Kyoto autumn night illuminations", "body": "Temples like Kiyomizu-dera, Eikando, and Kodai-ji run special autumn night openings with timed tickets, usually released about a month ahead — check each temple's site directly in October since dates/rules change yearly." }
+    {
+      "id": "nintendo_museum",
+      "urgent": true,
+      "meta": "ENTER LOTTERY IN AUGUST 2026 — RESULTS SEPT 1",
+      "title": "Nintendo Museum, Uji (Kyoto)",
+      "body": "Tickets are lottery-only via museum-tickets.nintendo.com (free Nintendo Account needed). Entries open 3 months before the target month, with results on the 1st of the following month — so for a November visit, enter during August 2026, results announced Sept 1. No walk-ins, no third-party booking. If you miss the lottery, unclaimed slots sometimes open for direct purchase about 2 weeks after results — worth checking the site then too."
+    },
+    {
+      "id": "usj",
+      "urgent": false,
+      "meta": "BOOK BY ~ MID-SEPTEMBER 2026",
+      "title": "Universal Studios Japan (Osaka) — Express Pass",
+      "body": "Express Passes for November typically go on sale mid-September (about 6–7 weeks out) and sell out weeks in advance online; on-site sales are rare. Base Studio Pass (park admission) is separate and required alongside it. 2026 is USJ's 25th anniversary (\"Discover U!!\"), so crowds and demand are higher than normal — book as soon as the window opens via the official USJ site or Klook/Rakuten."
+    },
+    {
+      "id": "teamlab",
+      "urgent": false,
+      "meta": "BOOK: AS SOON AS CALENDAR OPENS (~EARLY SEPT), AT LEAST 2–3 WEEKS AHEAD",
+      "title": "teamLab Planets / Borderless (Tokyo)",
+      "body": "Timed-entry tickets, booking calendar opens roughly two months ahead. Planets does not sell on-site at all; Borderless same-day tickets can also sell out. Rough pricing: Planets ¥2,600–4,200 adult depending on date; Borderless ¥3,800–5,600 adult. Weekends need 2–3 weeks' notice, holiday-adjacent dates a month+. Book via the official site or Klook (often best rates)."
+    },
+    {
+      "id": "ghibli",
+      "urgent": false,
+      "meta": "BOOK ON: OCT 10, 2026, 10:00 AM JST",
+      "title": "Ghibli Museum, Mitaka (Tokyo)",
+      "body": "Overseas tickets are released via Lawson Ticket International on the 10th of the month for the following month — so November tickets go on sale Oct 10 at 10am Japan time. They sell out within minutes/hours. Someone in the group should be ready right at 10am JST that day. Fallback: JTB Sunrise Tour packages if you miss the window."
+    },
+    {
+      "id": "shibuya_sky",
+      "urgent": false,
+      "meta": "OPENS ~2 WEEKS AHEAD OF EACH DATE, AT MIDNIGHT JST",
+      "title": "Shibuya Sky — sunset slot",
+      "body": "Advance tickets ¥2,500 (vs ¥3,000 on the door). Dates open roughly 2 weeks out; the slot starting about an hour before sunset is the most popular and can go within days. Book the moment your date opens. Heads-up: the official site has been rejecting a lot of foreign-issued cards since mid-2024 — Klook is a safer bet for booking with a non-Japanese card."
+    },
+    {
+      "id": "mario_kart",
+      "urgent": true,
+      "meta": "GET THE IDP BEFORE YOU LEAVE HOME — CANNOT BE DONE IN JAPAN",
+      "title": "Mario Kart street tour",
+      "body": "Every participant needs an International Driving Permit (1949 Geneva Convention, booklet form — not a printout) plus their physical home driver's licence and passport. The IDP has to be issued in your home country before you fly out; it cannot be obtained once you're in Japan. (UK: apply at a Post Office. Handful of countries — Switzerland, Germany, France, Taiwan, Belgium, Estonia, Monaco — can use an official Japanese translation of their licence instead.) Book the tour itself separately once everyone's permits are sorted."
+    },
+    {
+      "id": "shinkansen",
+      "urgent": false,
+      "meta": "BOOK RESERVED SEATS ~3–4 WEEKS AHEAD",
+      "title": "Tokyo–Kyoto–Osaka transport",
+      "body": "<b>Skip the JR Pass for this route</b> — with just Tokyo/Kyoto/Osaka, a round-trip Tokyo–Kyoto Shinkansen fare (~¥28,340) is well under the 7-day Pass price (¥50,000 now, rising to ¥53,000 from Oct 1, 2026). The Pass only pays off if you add a longer leg like Hiroshima or Kanazawa. Book point-to-point reserved seats instead via SmartEX or JR-Central/JR-West's Ekinet, ideally 3–4 weeks out — November is peak autumn travel season and reserved cars do sell out on popular days/times."
+    },
+    {
+      "id": "kyoto_osaka_accom",
+      "urgent": false,
+      "meta": "DECIDE, THEN BOOK",
+      "title": "Kyoto & Osaka accommodation",
+      "body": "Still open whether Kyoto and Osaka are overnight stays or day trips from the Tokyo/Shinjuku base. Worth deciding soon since it changes what else needs booking (extra hotel nights) versus just transport timing for day trips."
+    },
+    {
+      "id": "baseball",
+      "urgent": false,
+      "meta": "HEADS-UP: LIKELY WON'T ALIGN WITH THESE DATES",
+      "title": "Baseball at Tokyo Dome",
+      "body": "Worth flagging early: the 2026 NPB regular season and Japan Series are on track to wrap up by around November 1 (Japan Series currently slated Oct 24 – Nov 1 if it goes the full 7 games). That's before your Nov 4 arrival, so an actual NPB game during the trip looks unlikely. Worth a quick check closer to the time for any exhibition games or other Tokyo Dome events, but don't bank on this one — may be worth dropping from the plan."
+    },
+    {
+      "id": "restaurants",
+      "urgent": false,
+      "meta": "BOOK 1–8 WEEKS AHEAD DEPENDING ON RESTAURANT",
+      "title": "Sought-after restaurant reservations",
+      "body": "Popular sushi/omakase counters (like the small 6-seat spots in Osaka) often book out weeks to months ahead. Use TableCheck, Pocket Concierge, or the OMAKASE app for English-friendly booking; some places only take reservations via phone or a hotel concierge. Worth locking in a few \"must-do\" dinners early — Gonpachi included — and leaving other nights flexible for Dotonbori/Omoide Yokocho-style wandering."
+    },
+    {
+      "id": "illuminations",
+      "urgent": false,
+      "meta": "CHECK/BOOK IN OCTOBER",
+      "title": "Kyoto autumn night illuminations",
+      "body": "Temples like Kiyomizu-dera, Eikando, and Kodai-ji run special autumn night openings with timed tickets, usually released about a month ahead — check each temple's site directly in October since dates/rules change yearly."
+    }
   ],
   "foliage_note": "<b>Foliage timing heads-up:</b> current 2026 forecasts point to Kyoto's peak autumn colour landing around Nov 20–Dec 7 — slightly later than average. Your Nov 4–18 window likely catches early-to-mid colour rather than full peak; Arashiyama and Tōfuku-ji tend to turn earliest, so they're your best bet, especially for the traveler leaving Nov 11.",
   "wishlist": {
     "tokyo": {
       "subhead": "Base: Shinjuku",
       "columns": [
-        { "heading": "Sights & Culture", "items": [
-          { "title": "Shibuya Sky", "detail": "sunset viewing, advance booking required (see Booking tab)." },
-          { "title": "Shibuya Crossing", "detail": "for night photography." },
-          { "title": "Nezu Shrine", "detail": "a quieter temple visit away from the crowds." },
-          { "title": "Gotokuji Temple", "detail": "known for its hundreds of lucky cat (maneki-neko) statues." }
-        ]},
-        { "heading": "Gaming & Shopping", "items": [
-          { "title": "Nintendo Tokyo + Capcom Store", "detail": "both in Shibuya PARCO, worth doing as one combined visit since they're in the same building." },
-          { "title": "Super Potato", "detail": "retro games." },
-          { "title": "Mandarake Complex", "detail": "collectibles, manga, and games." },
-          { "title": "Akihabara arcade crawl", "detail": "" },
-          { "title": "Square Enix Store", "detail": "" }
-        ]},
-        { "heading": "Food, Bars & Nightlife", "items": [
-          { "title": "Omoide Yokocho", "detail": "skewers and beers." },
-          { "title": "Karaoke Kan", "detail": "" },
-          { "title": "Bar Centifolia", "detail": "cocktails." },
-          { "title": "Gonpachi", "detail": "the restaurant associated with the Kill Bill aesthetic; book ahead (see Booking tab)." }
-        ]},
-        { "heading": "Activities", "items": [
-          { "title": "Mario Kart street tour", "detail": "needs a valid International Driving Permit for everyone driving; see Booking tab, sort this well before departure." },
-          { "title": "Baseball at Tokyo Dome", "detail": "flagged as unlikely to align with the November dates; see Booking tab." }
-        ]},
-        { "heading": "Recovery", "items": [
-          { "title": "Spa LaQua", "detail": "onsen, spa, and recovery session; good slot for a lower-key day after a heavy night." }
-        ]}
+        {
+          "heading": "Sights & Culture",
+          "items": [
+            {
+              "title": "Shibuya Sky",
+              "detail": "sunset viewing, advance booking required (see Booking tab)."
+            },
+            {
+              "title": "Shibuya Crossing",
+              "detail": "for night photography."
+            },
+            {
+              "title": "Nezu Shrine",
+              "detail": "a quieter temple visit away from the crowds."
+            },
+            {
+              "title": "Gotokuji Temple",
+              "detail": "known for its hundreds of lucky cat (maneki-neko) statues."
+            }
+          ]
+        },
+        {
+          "heading": "Gaming & Shopping",
+          "items": [
+            {
+              "title": "Nintendo Tokyo + Capcom Store",
+              "detail": "both in Shibuya PARCO, worth doing as one combined visit since they're in the same building."
+            },
+            {
+              "title": "Super Potato",
+              "detail": "retro games."
+            },
+            {
+              "title": "Mandarake Complex",
+              "detail": "collectibles, manga, and games."
+            },
+            {
+              "title": "Akihabara arcade crawl",
+              "detail": ""
+            },
+            {
+              "title": "Square Enix Store",
+              "detail": ""
+            }
+          ]
+        },
+        {
+          "heading": "Food, Bars & Nightlife",
+          "items": [
+            {
+              "title": "Omoide Yokocho",
+              "detail": "skewers and beers."
+            },
+            {
+              "title": "Karaoke Kan",
+              "detail": ""
+            },
+            {
+              "title": "Bar Centifolia",
+              "detail": "cocktails."
+            },
+            {
+              "title": "Gonpachi",
+              "detail": "the restaurant associated with the Kill Bill aesthetic; book ahead (see Booking tab)."
+            }
+          ]
+        },
+        {
+          "heading": "Activities",
+          "items": [
+            {
+              "title": "Mario Kart street tour",
+              "detail": "needs a valid International Driving Permit for everyone driving; see Booking tab, sort this well before departure."
+            },
+            {
+              "title": "Baseball at Tokyo Dome",
+              "detail": "flagged as unlikely to align with the November dates; see Booking tab."
+            }
+          ]
+        },
+        {
+          "heading": "Recovery",
+          "items": [
+            {
+              "title": "Spa LaQua",
+              "detail": "onsen, spa, and recovery session; good slot for a lower-key day after a heavy night."
+            }
+          ]
+        }
       ]
     },
     "osaka": {
       "subhead": "",
       "columns": [
-        { "heading": "Food", "items": [
-          { "title": "Dotonbori", "detail": "takoyaki, nightlife and neon; Osaka's signature food strip, best after dark for the neon-on-canal look." },
-          { "title": "Yakiniku dinner", "detail": "plan one night for this." },
-          { "title": "Kuromon Ichiba Market", "detail": "covered market, 150+ stalls; sea urchin, grilled oysters, wagyu skewers, tuna sashimi. Open ~9am–6pm, closed some Sundays." },
-          { "title": "Okonomiyaki at Mizuno or Chibo", "detail": "two of the longest-standing, most-recommended spots for the dish." },
-          { "title": "Shinsekai", "detail": "retro district where kushikatsu originated; cheaper and less touristy than Dotonbori." },
-          { "title": "Small-counter sushi (e.g. Jinsei, Sakae Sushi)", "detail": "Jinsei is a 6-seat counter praised for watching the chef work; Sakae Sushi rated as excellent value." }
-        ]},
-        { "heading": "Hobbies & Activities", "items": [
-          { "title": "Universal Studios Japan", "detail": "see Booking tab; book Express Pass early, 25th-anniversary crowds expected." },
-          { "title": "Osaka Castle grounds", "detail": "solid half-day, especially with some autumn colour starting by mid-November." },
-          { "title": "Food tour through Dotonbori/Kuromon", "detail": "guided option if the group wants context/recommendations rather than wandering solo." }
-        ]}
+        {
+          "heading": "Food",
+          "items": [
+            {
+              "title": "Dotonbori",
+              "detail": "takoyaki, nightlife and neon; Osaka's signature food strip, best after dark for the neon-on-canal look."
+            },
+            {
+              "title": "Yakiniku dinner",
+              "detail": "plan one night for this."
+            },
+            {
+              "title": "Kuromon Ichiba Market",
+              "detail": "covered market, 150+ stalls; sea urchin, grilled oysters, wagyu skewers, tuna sashimi. Open ~9am–6pm, closed some Sundays."
+            },
+            {
+              "title": "Okonomiyaki at Mizuno or Chibo",
+              "detail": "two of the longest-standing, most-recommended spots for the dish."
+            },
+            {
+              "title": "Shinsekai",
+              "detail": "retro district where kushikatsu originated; cheaper and less touristy than Dotonbori."
+            },
+            {
+              "title": "Small-counter sushi (e.g. Jinsei, Sakae Sushi)",
+              "detail": "Jinsei is a 6-seat counter praised for watching the chef work; Sakae Sushi rated as excellent value."
+            }
+          ]
+        },
+        {
+          "heading": "Hobbies & Activities",
+          "items": [
+            {
+              "title": "Universal Studios Japan",
+              "detail": "see Booking tab; book Express Pass early, 25th-anniversary crowds expected."
+            },
+            {
+              "title": "Osaka Castle grounds",
+              "detail": "solid half-day, especially with some autumn colour starting by mid-November."
+            },
+            {
+              "title": "Food tour through Dotonbori/Kuromon",
+              "detail": "guided option if the group wants context/recommendations rather than wandering solo."
+            }
+          ]
+        }
       ]
     },
     "kyoto": {
       "callout": "Kyoto sightseeing is still to be finalised — the picks below are suggestions to consider, not confirmed plans yet.",
       "columns": [
-        { "heading": "Uji", "items": [
-          { "title": "Nintendo Museum", "detail": "lottery-ticket only, see Booking tab (enter in August for a November visit)." },
-          { "title": "Udon and tonkatsu stops", "detail": "planned food stops in the area." }
-        ]},
-        { "heading": "Food (Kyoto — ideas)", "items": [
-          { "title": "Nishiki Market", "detail": "Kyoto's answer to Kuromon; street food, pickles, skewers, tea." },
-          { "title": "Kaiseki dinner", "detail": "worth booking one formal multi-course meal in Kyoto specifically; reserve ahead via TableCheck." },
-          { "title": "Bento-making class", "detail": "hands-on cooking class covering bento's origins and techniques, well reviewed as a group activity." }
-        ]},
-        { "heading": "Sights & Activities (Kyoto — ideas)", "items": [
-          { "title": "Fushimi Inari Taisha", "detail": "thousand-gate trail, consistently the top-rated Kyoto sight; go early morning to beat crowds." },
-          { "title": "Arashiyama + Sagano Romantic Train", "detail": "bamboo grove plus a scenic train through the valley; best early-color bet for your dates (see foliage note in Booking tab)." },
-          { "title": "Samurai experience", "detail": "small-group session covering Bushido philosophy, handling a real sword, short Zen meditation." },
-          { "title": "Kintsugi workshop", "detail": "repairing broken ceramics with gold lacquer; unusual, well-reviewed souvenir-making activity." },
-          { "title": "Kiyomizu-dera / Sannenzaka & Ninenzaka", "detail": "classic temple + old streets combo, pairs well with an autumn illumination night visit if dates align." }
-        ]}
+        {
+          "heading": "Uji",
+          "items": [
+            {
+              "title": "Nintendo Museum",
+              "detail": "lottery-ticket only, see Booking tab (enter in August for a November visit)."
+            },
+            {
+              "title": "Udon and tonkatsu stops",
+              "detail": "planned food stops in the area."
+            }
+          ]
+        },
+        {
+          "heading": "Food (Kyoto — ideas)",
+          "items": [
+            {
+              "title": "Nishiki Market",
+              "detail": "Kyoto's answer to Kuromon; street food, pickles, skewers, tea."
+            },
+            {
+              "title": "Kaiseki dinner",
+              "detail": "worth booking one formal multi-course meal in Kyoto specifically; reserve ahead via TableCheck."
+            },
+            {
+              "title": "Bento-making class",
+              "detail": "hands-on cooking class covering bento's origins and techniques, well reviewed as a group activity."
+            }
+          ]
+        },
+        {
+          "heading": "Sights & Activities (Kyoto — ideas)",
+          "items": [
+            {
+              "title": "Fushimi Inari Taisha",
+              "detail": "thousand-gate trail, consistently the top-rated Kyoto sight; go early morning to beat crowds."
+            },
+            {
+              "title": "Arashiyama + Sagano Romantic Train",
+              "detail": "bamboo grove plus a scenic train through the valley; best early-color bet for your dates (see foliage note in Booking tab)."
+            },
+            {
+              "title": "Samurai experience",
+              "detail": "small-group session covering Bushido philosophy, handling a real sword, short Zen meditation."
+            },
+            {
+              "title": "Kintsugi workshop",
+              "detail": "repairing broken ceramics with gold lacquer; unusual, well-reviewed souvenir-making activity."
+            },
+            {
+              "title": "Kiyomizu-dera / Sannenzaka & Ninenzaka",
+              "detail": "classic temple + old streets combo, pairs well with an autumn illumination night visit if dates align."
+            },
+            {
+              "title": "Kinkaku-ji",
+              "detail": "the iconic gold-leaf-covered Zen pavilion set over a reflecting pond; one of Kyoto's most photographed sights, best early in the day to beat tour groups."
+            }
+          ]
+        }
       ]
     }
   }
