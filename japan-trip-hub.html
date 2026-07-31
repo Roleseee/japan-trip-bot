@@ -66,19 +66,15 @@
   }
   .save-note { font-size: 11.5px; color: #999; margin-top: 4px; }
   footer { margin-top: 28px; font-size: 11.5px; color: #aaa; text-align: center; }
+  .load-state { padding: 40px 0; text-align: center; color: #999; font-size: 13.5px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>🇯🇵 Japan Trip Hub</h1>
-    <div class="subhead">Tokyo · Kyoto &amp; Uji · Osaka — Nov 4–18, 2026</div>
-    <div class="traveler-pills">
-      <span class="pill">3 travelers · full trip (Nov 4–18)</span>
-      <span class="pill">1 traveler · Nov 4–11 only</span>
-      <span class="pill ok">Flights: booked (Cathay Pacific, likely via Hong Kong)</span>
-      <span class="pill ok">Tokyo hotel: booked ✅ (La'Gent Hotel Shinjuku Kabukicho)</span>
-    </div>
+    <h1>🇯🇵 <span id="hubTitle">Japan Trip Hub</span></h1>
+    <div class="subhead" id="hubSubhead"></div>
+    <div class="traveler-pills" id="hubPills"></div>
   </header>
 
   <div class="tabs">
@@ -90,234 +86,33 @@
     <div class="tab" data-tab="notes">Itinerary Notes</div>
   </div>
 
+  <div id="loadState" class="load-state">Loading itinerary…</div>
+
   <!-- BOOKING TAB -->
-  <div class="panel active" id="panel-booking">
-    <div class="callout">
-      <b>Why timing matters:</b> several of Japan's most popular experiences use timed-release or lottery ticketing 1–3 months out, and November 2026 is the 25th‑anniversary year for Universal Studios Japan — expect faster sellouts than usual. Check items off as your group books them; this list saves in the page.
-    </div>
-
-    <div class="checklist-item" data-id="nintendo_museum">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta urgent">ENTER LOTTERY IN AUGUST 2026 — RESULTS SEPT 1</div>
-        <h3>Nintendo Museum, Uji (Kyoto)</h3>
-        <p>Tickets are lottery-only via museum-tickets.nintendo.com (free Nintendo Account needed). Entries open 3 months before the target month, with results on the 1st of the following month — so for a November visit, enter during August 2026, results announced Sept 1. No walk-ins, no third-party booking. If you miss the lottery, unclaimed slots sometimes open for direct purchase about 2 weeks after results — worth checking the site then too.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="usj">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">BOOK BY ~ MID-SEPTEMBER 2026</div>
-        <h3>Universal Studios Japan (Osaka) — Express Pass</h3>
-        <p>Express Passes for November typically go on sale mid-September (about 6–7 weeks out) and sell out weeks in advance online; on-site sales are rare. Base Studio Pass (park admission) is separate and required alongside it. 2026 is USJ's 25th anniversary ("Discover U!!"), so crowds and demand are higher than normal — book as soon as the window opens via the official USJ site or Klook/Rakuten.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="teamlab">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">BOOK: AS SOON AS CALENDAR OPENS (~EARLY SEPT), AT LEAST 2–3 WEEKS AHEAD</div>
-        <h3>teamLab Planets / Borderless (Tokyo)</h3>
-        <p>Timed-entry tickets, booking calendar opens roughly two months ahead. Planets does not sell on-site at all; Borderless same-day tickets can also sell out. Rough pricing: Planets ¥2,600–4,200 adult depending on date; Borderless ¥3,800–5,600 adult. Weekends need 2–3 weeks' notice, holiday-adjacent dates a month+. Book via the official site or Klook (often best rates).</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="ghibli">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">BOOK ON: OCT 10, 2026, 10:00 AM JST</div>
-        <h3>Ghibli Museum, Mitaka (Tokyo)</h3>
-        <p>Overseas tickets are released via Lawson Ticket International on the 10th of the month for the following month — so November tickets go on sale Oct 10 at 10am Japan time. They sell out within minutes/hours. Someone in the group should be ready right at 10am JST that day. Fallback: JTB Sunrise Tour packages if you miss the window.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="shibuya_sky">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">OPENS ~2 WEEKS AHEAD OF EACH DATE, AT MIDNIGHT JST</div>
-        <h3>Shibuya Sky — sunset slot</h3>
-        <p>Advance tickets ¥2,500 (vs ¥3,000 on the door). Dates open roughly 2 weeks out; the slot starting about an hour before sunset is the most popular and can go within days. Book the moment your date opens. Heads-up: the official site has been rejecting a lot of foreign-issued cards since mid-2024 — Klook is a safer bet for booking with a non-Japanese card.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="mario_kart">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta urgent">GET THE IDP BEFORE YOU LEAVE HOME — CANNOT BE DONE IN JAPAN</div>
-        <h3>Mario Kart street tour</h3>
-        <p>Every participant needs an International Driving Permit (1949 Geneva Convention, booklet form — not a printout) plus their physical home driver's licence and passport. The IDP has to be issued in your home country before you fly out; it cannot be obtained once you're in Japan. (UK: apply at a Post Office. Handful of countries — Switzerland, Germany, France, Taiwan, Belgium, Estonia, Monaco — can use an official Japanese translation of their licence instead.) Book the tour itself separately once everyone's permits are sorted.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="shinkansen">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">BOOK RESERVED SEATS ~3–4 WEEKS AHEAD</div>
-        <h3>Tokyo–Kyoto–Osaka transport</h3>
-        <p><b>Skip the JR Pass for this route</b> — with just Tokyo/Kyoto/Osaka, a round-trip Tokyo–Kyoto Shinkansen fare (~¥28,340) is well under the 7-day Pass price (¥50,000 now, rising to ¥53,000 from Oct 1, 2026). The Pass only pays off if you add a longer leg like Hiroshima or Kanazawa. Book point-to-point reserved seats instead via SmartEX or JR-Central/JR-West's Ekinet, ideally 3–4 weeks out — November is peak autumn travel season and reserved cars do sell out on popular days/times.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="kyoto_osaka_accom">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">DECIDE, THEN BOOK</div>
-        <h3>Kyoto &amp; Osaka accommodation</h3>
-        <p>Still open whether Kyoto and Osaka are overnight stays or day trips from the Tokyo/Shinjuku base. Worth deciding soon since it changes what else needs booking (extra hotel nights) versus just transport timing for day trips.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="baseball">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">HEADS-UP: LIKELY WON'T ALIGN WITH THESE DATES</div>
-        <h3>Baseball at Tokyo Dome</h3>
-        <p>Worth flagging early: the 2026 NPB regular season and Japan Series are on track to wrap up by around November 1 (Japan Series currently slated Oct 24 – Nov 1 if it goes the full 7 games). That's before your Nov 4 arrival, so an actual NPB game during the trip looks unlikely. Worth a quick check closer to the time for any exhibition games or other Tokyo Dome events, but don't bank on this one — may be worth dropping from the plan.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="restaurants">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">BOOK 1–8 WEEKS AHEAD DEPENDING ON RESTAURANT</div>
-        <h3>Sought-after restaurant reservations</h3>
-        <p>Popular sushi/omakase counters (like the small 6-seat spots in Osaka) often book out weeks to months ahead. Use TableCheck, Pocket Concierge, or the OMAKASE app for English-friendly booking; some places only take reservations via phone or a hotel concierge. Worth locking in a few "must-do" dinners early — Gonpachi included — and leaving other nights flexible for Dotonbori/Omoide Yokocho-style wandering.</p>
-      </div>
-    </div>
-
-    <div class="checklist-item" data-id="illuminations">
-      <input type="checkbox">
-      <div class="card-body card">
-        <div class="meta">CHECK/BOOK IN OCTOBER</div>
-        <h3>Kyoto autumn night illuminations</h3>
-        <p>Temples like Kiyomizu-dera, Eikando, and Kodai-ji run special autumn night openings with timed tickets, usually released about a month ahead — check each temple's site directly in October since dates/rules change yearly.</p>
-      </div>
-    </div>
-
-    <div class="callout" style="margin-top: 4px;">
-      <b>Foliage timing heads-up:</b> current 2026 forecasts point to Kyoto's peak autumn colour landing around Nov 20–Dec 7 — slightly later than average. Your Nov 4–18 window likely catches early-to-mid colour rather than full peak; Arashiyama and Tōfuku-ji tend to turn earliest, so they're your best bet, especially for the traveler leaving Nov 11.
-    </div>
-  </div>
+  <div class="panel active" id="panel-booking"></div>
 
   <!-- FLIGHTS & STAYS TAB -->
-  <div class="panel" id="panel-stays">
-    <div class="card">
-      <div class="meta">BOOKED</div>
-      <h3>Flights</h3>
-      <p>Booked with Cathay Pacific, most likely routing via Hong Kong.</p>
-    </div>
-
-    <div class="card">
-      <div class="meta">BOOKED</div>
-      <h3>Tokyo hotel</h3>
-      <p><b>La'Gent Hotel Shinjuku Kabukicho</b> — booked for the Tokyo leg of the trip.</p>
-    </div>
-
-    <div class="card">
-      <div class="meta">TO DECIDE</div>
-      <h3>Kyoto &amp; Osaka accommodation</h3>
-      <p>Not yet decided whether these are overnight stays or day trips from Tokyo/Shinjuku.</p>
-    </div>
-  </div>
+  <div class="panel" id="panel-stays"></div>
 
   <!-- TOKYO TAB -->
-  <div class="panel" id="panel-tokyo">
-    <div class="subhead" style="margin-bottom: 12px;">Base: Shinjuku</div>
-    <div class="rec-grid">
-      <div class="rec-col">
-        <h4>Sights &amp; Culture</h4>
-        <div class="rec-item"><b>Shibuya Sky</b> — sunset viewing, advance booking required (see Booking tab).</div>
-        <div class="rec-item"><b>Shibuya Crossing</b> — for night photography.</div>
-        <div class="rec-item"><b>Nezu Shrine</b> — a quieter temple visit away from the crowds.</div>
-        <div class="rec-item"><b>Gotokuji Temple</b> — known for its hundreds of lucky cat (maneki-neko) statues.</div>
-      </div>
-      <div class="rec-col">
-        <h4>Gaming &amp; Shopping</h4>
-        <div class="rec-item"><b>Nintendo Tokyo + Capcom Store</b> — both in Shibuya PARCO, worth doing as one combined visit since they're in the same building.</div>
-        <div class="rec-item"><b>Super Potato</b> — retro games.</div>
-        <div class="rec-item"><b>Mandarake Complex</b> — collectibles, manga, and games.</div>
-        <div class="rec-item"><b>Akihabara arcade crawl</b>.</div>
-        <div class="rec-item"><b>Square Enix Store</b>.</div>
-      </div>
-      <div class="rec-col">
-        <h4>Food, Bars &amp; Nightlife</h4>
-        <div class="rec-item"><b>Omoide Yokocho</b> — skewers and beers.</div>
-        <div class="rec-item"><b>Karaoke Kan</b>.</div>
-        <div class="rec-item"><b>Bar Centifolia</b> — cocktails.</div>
-        <div class="rec-item"><b>Gonpachi</b> — the restaurant associated with the Kill Bill aesthetic; book ahead (see Booking tab).</div>
-      </div>
-      <div class="rec-col">
-        <h4>Activities</h4>
-        <div class="rec-item"><b>Mario Kart street tour</b> — needs a valid International Driving Permit for everyone driving; see Booking tab, sort this well before departure.</div>
-        <div class="rec-item"><b>Baseball at Tokyo Dome</b> — flagged as unlikely to align with the November dates; see Booking tab.</div>
-      </div>
-      <div class="rec-col">
-        <h4>Recovery</h4>
-        <div class="rec-item"><b>Spa LaQua</b> — onsen, spa, and recovery session; good slot for a lower-key day after a heavy night.</div>
-      </div>
-    </div>
-  </div>
+  <div class="panel" id="panel-tokyo"></div>
 
   <!-- OSAKA TAB -->
-  <div class="panel" id="panel-osaka">
-    <div class="rec-grid">
-      <div class="rec-col">
-        <h4>Food</h4>
-        <div class="rec-item"><b>Dotonbori</b> — takoyaki, nightlife and neon; Osaka's signature food strip, best after dark for the neon-on-canal look.</div>
-        <div class="rec-item"><b>Yakiniku dinner</b> — plan one night for this.</div>
-        <div class="rec-item"><b>Kuromon Ichiba Market</b> — covered market, 150+ stalls; sea urchin, grilled oysters, wagyu skewers, tuna sashimi. Open ~9am–6pm, closed some Sundays.</div>
-        <div class="rec-item"><b>Okonomiyaki at Mizuno or Chibo</b> — two of the longest-standing, most-recommended spots for the dish.</div>
-        <div class="rec-item"><b>Shinsekai</b> — retro district where kushikatsu originated; cheaper and less touristy than Dotonbori.</div>
-        <div class="rec-item"><b>Small-counter sushi (e.g. Jinsei, Sakae Sushi)</b> — Jinsei is a 6-seat counter praised for watching the chef work; Sakae Sushi rated as excellent value.</div>
-      </div>
-      <div class="rec-col">
-        <h4>Hobbies &amp; Activities</h4>
-        <div class="rec-item"><b>Universal Studios Japan</b> — see Booking tab; book Express Pass early, 25th-anniversary crowds expected.</div>
-        <div class="rec-item"><b>Osaka Castle grounds</b> — solid half-day, especially with some autumn colour starting by mid-November.</div>
-        <div class="rec-item"><b>Food tour through Dotonbori/Kuromon</b> — guided option if the group wants context/recommendations rather than wandering solo.</div>
-      </div>
-    </div>
-  </div>
+  <div class="panel" id="panel-osaka"></div>
 
   <!-- KYOTO & UJI TAB -->
-  <div class="panel" id="panel-kyoto">
-    <div class="callout" style="margin-bottom: 16px;">
-      Kyoto sightseeing is still to be finalised — the picks below are suggestions to consider, not confirmed plans yet.
-    </div>
-    <div class="rec-grid">
-      <div class="rec-col">
-        <h4>Uji</h4>
-        <div class="rec-item"><b>Nintendo Museum</b> — lottery-ticket only, see Booking tab (enter in August for a November visit).</div>
-        <div class="rec-item"><b>Udon and tonkatsu stops</b> — planned food stops in the area.</div>
-      </div>
-      <div class="rec-col">
-        <h4>Food (Kyoto — ideas)</h4>
-        <div class="rec-item"><b>Nishiki Market</b> — Kyoto's answer to Kuromon; street food, pickles, skewers, tea.</div>
-        <div class="rec-item"><b>Kaiseki dinner</b> — worth booking one formal multi-course meal in Kyoto specifically; reserve ahead via TableCheck.</div>
-        <div class="rec-item"><b>Bento-making class</b> — hands-on cooking class covering bento's origins and techniques, well reviewed as a group activity.</div>
-      </div>
-      <div class="rec-col">
-        <h4>Sights &amp; Activities (Kyoto — ideas)</h4>
-        <div class="rec-item"><b>Fushimi Inari Taisha</b> — thousand-gate trail, consistently the top-rated Kyoto sight; go early morning to beat crowds.</div>
-        <div class="rec-item"><b>Arashiyama + Sagano Romantic Train</b> — bamboo grove plus a scenic train through the valley; best early-color bet for your dates (see foliage note in Booking tab).</div>
-        <div class="rec-item"><b>Samurai experience</b> — small-group session covering Bushido philosophy, handling a real sword, short Zen meditation.</div>
-        <div class="rec-item"><b>Kintsugi workshop</b> — repairing broken ceramics with gold lacquer; unusual, well-reviewed souvenir-making activity.</div>
-        <div class="rec-item"><b>Kiyomizu-dera / Sannenzaka &amp; Ninenzaka</b> — classic temple + old streets combo, pairs well with an autumn illumination night visit if dates align.</div>
-      </div>
-    </div>
-  </div>
+  <div class="panel" id="panel-kyoto"></div>
 
   <!-- NOTES TAB -->
   <div class="panel" id="panel-notes">
     <div class="card">
       <h3>Paste in the old ChatGPT itinerary</h3>
-      <p>Drop whatever you've still got from the disabled ChatGPT group chat here so it's preserved in one place. This box saves automatically on this device (not shared to the group yet — copy it into a doc or message it over once it looks right).</p>
+      <p>Drop whatever you've still got from the disabled ChatGPT group chat here so it's preserved in one place. This box saves automatically on this device (not shared to the group yet — copy it into a doc or message it over once it looks right). To make a change everyone sees on this page, ask the Discord bot with <code>!update ...</code> instead.</p>
       <textarea id="itineraryNotes" placeholder="Paste day-by-day plans, must-do lists, or anything else from the old chat..."></textarea>
       <div class="save-note" id="saveIndicator">Saved locally</div>
     </div>
     <div class="note-box">
-      Know of anything wrong or out of date above (prices, release dates, closures)? This page reflects research as of late July 2026, updated with the working itinerary — double check exact dates closer to your booking windows since release schedules can shift.
+      This page is generated from <code>itinerary_data.json</code> in the same repo. Ask the Discord bot to update it (e.g. <code>!update add Kinkaku-ji to the Kyoto wishlist</code>) and, once one of the trip organizers confirms, this page updates automatically within a minute or two.
     </div>
   </div>
 
@@ -325,6 +120,110 @@
 </div>
 
 <script>
+  const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  // detail/body fields are allowed a small set of inline tags (b, i) that we author ourselves
+  // in itinerary_data.json, so they're rendered as-is rather than escaped.
+
+  function renderPills(pills) {
+    const el = document.getElementById('hubPills');
+    el.innerHTML = (pills || []).map(p =>
+      `<span class="pill${p.style ? ' ' + p.style : ''}">${esc(p.text)}</span>`
+    ).join('');
+  }
+
+  function renderBooking(data) {
+    const panel = document.getElementById('panel-booking');
+    let html = `<div class="callout">${data.booking_callout || ''}</div>`;
+    (data.booking_checklist || []).forEach(item => {
+      html += `
+        <div class="checklist-item" data-id="${esc(item.id)}">
+          <input type="checkbox">
+          <div class="card-body card">
+            <div class="meta${item.urgent ? ' urgent' : ''}">${esc(item.meta)}</div>
+            <h3>${esc(item.title)}</h3>
+            <p>${item.body || ''}</p>
+          </div>
+        </div>`;
+    });
+    if (data.foliage_note) {
+      html += `<div class="callout" style="margin-top: 4px;">${data.foliage_note}</div>`;
+    }
+    panel.innerHTML = html;
+
+    const items = panel.querySelectorAll('.checklist-item');
+    items.forEach(item => {
+      const id = item.dataset.id;
+      const checkbox = item.querySelector('input[type="checkbox"]');
+      const saved = localStorage.getItem('jp-trip-check-' + id);
+      if (saved === '1') {
+        checkbox.checked = true;
+        item.classList.add('done');
+      }
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem('jp-trip-check-' + id, checkbox.checked ? '1' : '0');
+        item.classList.toggle('done', checkbox.checked);
+      });
+    });
+  }
+
+  function renderStays(data) {
+    const panel = document.getElementById('panel-stays');
+    panel.innerHTML = (data.stays || []).map(s => `
+      <div class="card">
+        <div class="meta">${esc(s.meta)}</div>
+        <h3>${esc(s.title)}</h3>
+        <p>${s.body || ''}</p>
+      </div>`).join('');
+  }
+
+  function renderWishlistCity(panelId, city) {
+    const panel = document.getElementById(panelId);
+    let html = '';
+    if (city.subhead) {
+      html += `<div class="subhead" style="margin-bottom: 12px;">${esc(city.subhead)}</div>`;
+    }
+    if (city.callout) {
+      html += `<div class="callout" style="margin-bottom: 16px;">${esc(city.callout)}</div>`;
+    }
+    html += '<div class="rec-grid">';
+    (city.columns || []).forEach(col => {
+      html += `<div class="rec-col"><h4>${esc(col.heading)}</h4>`;
+      (col.items || []).forEach(it => {
+        html += `<div class="rec-item"><b>${esc(it.title)}</b>${it.detail ? ' — ' + esc(it.detail) : ''}</div>`;
+      });
+      html += '</div>';
+    });
+    html += '</div>';
+    panel.innerHTML = html;
+  }
+
+  function renderAll(data) {
+    document.getElementById('loadState').style.display = 'none';
+    if (data.trip) {
+      document.getElementById('hubTitle').textContent = data.trip.title || 'Japan Trip Hub';
+      document.getElementById('hubSubhead').textContent = data.trip.subtitle || '';
+      renderPills(data.trip.traveler_pills);
+    }
+    renderBooking(data);
+    renderStays(data);
+    if (data.wishlist) {
+      renderWishlistCity('panel-tokyo', data.wishlist.tokyo || {});
+      renderWishlistCity('panel-osaka', data.wishlist.osaka || {});
+      renderWishlistCity('panel-kyoto', data.wishlist.kyoto || {});
+    }
+  }
+
+  fetch('./itinerary_data.json', { cache: 'no-store' })
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(renderAll)
+    .catch(err => {
+      document.getElementById('loadState').textContent =
+        'Could not load itinerary_data.json (' + err.message + '). Refresh, or check the file exists in the repo.';
+    });
+
   const tabs = document.querySelectorAll('.tab');
   const panels = document.querySelectorAll('.panel');
   tabs.forEach(tab => {
@@ -336,23 +235,7 @@
     });
   });
 
-  // Checklist persistence
-  const items = document.querySelectorAll('.checklist-item');
-  items.forEach(item => {
-    const id = item.dataset.id;
-    const checkbox = item.querySelector('input[type="checkbox"]');
-    const saved = localStorage.getItem('jp-trip-check-' + id);
-    if (saved === '1') {
-      checkbox.checked = true;
-      item.classList.add('done');
-    }
-    checkbox.addEventListener('change', () => {
-      localStorage.setItem('jp-trip-check-' + id, checkbox.checked ? '1' : '0');
-      item.classList.toggle('done', checkbox.checked);
-    });
-  });
-
-  // Itinerary notes persistence
+  // Itinerary notes persistence (local scratchpad only, not synced)
   const notesArea = document.getElementById('itineraryNotes');
   const saveIndicator = document.getElementById('saveIndicator');
   const savedNotes = localStorage.getItem('jp-trip-itinerary-notes');
